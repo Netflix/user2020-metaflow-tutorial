@@ -1,5 +1,7 @@
-build_model <- function(self){
-    # load metaflow artifact from previous step
+build_gbm_model <- function(self){
+    library(data.table)
+    library(caret)
+
     dt <- self$features
 
     x <- dt[, !"price", with = FALSE] 
@@ -9,18 +11,14 @@ build_model <- function(self){
         n.trees = 100,
         shrinkage = 0.01,
         n.minobsinnode = 1,
-        interaction.depth = 3
+        interaction.depth = 3 
     )
 
-    source("./scripts/gbm.R")
+    source("./scripts/models.R")
     fit <- train_gbm_model(x, y, parameters)
 
-    ### saveRDS(fit$model, file = "./saved_models/gbm_100_0.01.RData")
-    ### return(fit)
-
-    self$model <- fit
+    self$model <- fit    
 }
-
 
 summarize_model <- function(self){
     print(self$model$results)

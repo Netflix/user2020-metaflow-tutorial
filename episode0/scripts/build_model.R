@@ -9,7 +9,7 @@ build_model <- function(dt){
         interaction.depth = 3
     )
 
-    source("./scripts/gbm.R")
+    source("./scripts/models.R")
     fit <- train_gbm_model(x, y, parameters)
 
     summarize_model(fit)
