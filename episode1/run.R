@@ -7,6 +7,8 @@ library(metaflow)
 
 metaflow("HouseFlow") %>%
     step(step = "start",
+         next_step = "pull_house_data") %>%
+    step(step = "pull_house_data",
          r_function = pull_house_data,
          next_step = "compute_features") %>%
     step(step = "compute_features",

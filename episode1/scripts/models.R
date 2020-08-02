@@ -1,5 +1,5 @@
 
-train_gbm_model <- function(x, y, paramters){
+train_gbm_model <- function(x, y, parameters){
     train_control <- caret::trainControl(
         method = "cv",
         number = 5)
@@ -8,7 +8,7 @@ train_gbm_model <- function(x, y, paramters){
         x = x,
         y = y,
         method = "gbm",
-        tuneGrid = paramters,
+        tuneGrid = parameters,
         trControl = train_control,
         verbose = FALSE
     )
