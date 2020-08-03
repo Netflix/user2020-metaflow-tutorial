@@ -27,9 +27,6 @@ jobs:
         python3 -m pip install --upgrade pip
         python3 -m pip install tox numpy pandas
 
-    - name: Install Metaflow python package for R tests
-      run: python3 -m pip install . 
-
     - name: Install system dependencies for R tests
       if: matrix.os == 'ubuntu-latest'
       run: sudo apt-get update; sudo apt-get install -y libcurl4-openssl-dev
@@ -42,8 +39,8 @@ jobs:
     - name: Install Metaflow R 
       run: |
         Rscript -e 'install.packages("devtools", repos="https://cloud.r-project.org", Ncpus=8)'
-        Rscript -e 'devtools::install_deps("R", dependencies=TRUE, repos="https://cloud.r-project.org", upgrade="default")'
-        R CMD INSTALL R 
+        Rscript -e 'devtools::install_github("Netflix/metaflow@R-dev", subdir="R")'
+        Rscript -e 'metaflow::install()'
 
     - name: Install R dependencies for R tests
       run:
