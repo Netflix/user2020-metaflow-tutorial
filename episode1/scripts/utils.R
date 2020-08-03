@@ -1,8 +1,11 @@
-install_dependencies <- function(){
-    if (!require(data.table)) {
+load_dependencies <- function(){
+    if (!suppressMessages(require(data.table))) {
         install.packages("data.table", repos = "https://cloud.r-project.org")
     }
-    if (!require(caret)) {
+    if (!suppressMessages(require(caret))) {
         install.packages("caret", repos = "https://cloud.r-project.org")
+    }
+    if (!suppressMessages(require(glmnet))) {
+        install.packages("glmnet", repos = "https://cloud.r-project.org")
     }
 }

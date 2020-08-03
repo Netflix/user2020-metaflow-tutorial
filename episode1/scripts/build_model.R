@@ -1,10 +1,11 @@
 build_gbm_model <- function(self){
-    library(data.table)
-    library(caret)
+    source("./scripts/models.R")
+    source("./scripts/utils.R")
+    load_dependencies()
 
     dt <- self$features
 
-    x <- dt[, !"price", with = FALSE] 
+    x <- dt[, !"price"] 
     y <- dt[, price]
 
     parameters <- data.frame(
@@ -21,5 +22,7 @@ build_gbm_model <- function(self){
 }
 
 summarize_model <- function(self){
+    source("./scripts/utils.R")
+    load_dependencies()
     print(self$model$results)
 }

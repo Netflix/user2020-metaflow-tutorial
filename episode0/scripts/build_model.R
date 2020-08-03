@@ -1,5 +1,5 @@
 build_model <- function(dt){
-    x <- dt[, !"price", with = FALSE] 
+    x <- dt[, !"price"] 
     y <- dt[, price]
 
     parameters <- data.frame(

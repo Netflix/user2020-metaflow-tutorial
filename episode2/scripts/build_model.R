@@ -1,8 +1,11 @@
 build_gbm_model <- function(self){
-    library(data.table)
+    source("./scripts/models.R")
+    source("./scripts/utils.R")
+    load_dependencies()
+
     dt <- self$features
 
-    x <- dt[, !"price", with = FALSE] 
+    x <- dt[, !"price"] 
     y <- dt[, price]
 
     parameters <- data.frame(
@@ -12,17 +15,19 @@ build_gbm_model <- function(self){
         interaction.depth = 3 
     )
 
-    source("./scripts/models.R")
     fit <- train_gbm_model(x, y, parameters)
 
     self$model <- fit    
 }
 
 build_lasso_model <- function(self){
+    source("./scripts/models.R")
+    source("./scripts/utils.R")
+    load_dependencies()
+
     dt <- self$features
 
-    x <- dt[, c("bedrooms", "bathrooms", "sqft_living", 
-                "grade", "waterfront", "condition"), with = FALSE] 
+    x <- dt[, c("bedrooms", "bathrooms", "sqft_living", "grade", "waterfront", "condition")] 
     y <- dt[, price]
 
     parameters <- data.frame(

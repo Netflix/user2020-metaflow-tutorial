@@ -5,7 +5,7 @@ source("./scripts/utils.R")
 
 
 message("====  install project R package dependencies ====")
-install_dependencies()
+load_dependencies()
 
 message("==== ingest and clean data ====")
 dt <- pull_house_data()
