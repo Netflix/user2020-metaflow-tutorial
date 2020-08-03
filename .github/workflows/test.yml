@@ -28,11 +28,11 @@ jobs:
         python3 -m pip install tox numpy pandas
 
     - name: Install Metaflow python package for R tests
-      if: matrix.lang == 'R'
       run: python3 -m pip install . 
 
     - name: Install system dependencies for R tests
-      run: sudo apt-get update; sudo apt-get install -y libcurl4-openssl-dev qpdf 
+      if: matrix.os == 'ubuntu-latest'
+      run: sudo apt-get update; sudo apt-get install -y libcurl4-openssl-dev
     
     - name: Set up R
       uses: r-lib/actions/setup-r@v1
@@ -47,7 +47,7 @@ jobs:
 
     - name: Install R dependencies for R tests
       run:
-        Rscript -e 'install.packages(c("data.table", "caret", "glmnet", "Matrix", "rjson"), repos="https://cloud.r-project.org", Ncpus=8)'    
+        Rscript -e 'install.packages(c("data.table", "caret", "glmnet", "gbm"), repos="https://cloud.r-project.org", Ncpus=8)'    
     
     - name: Run tutorials tests
       run: bash test.sh 
