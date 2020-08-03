@@ -8,16 +8,7 @@ build_gbm_model <- function(self){
     x <- dt[, !"price"] 
     y <- dt[, price]
 
-    parameters <- data.frame(
-        n.trees = 100,
-        shrinkage = self$lr,
-        n.minobsinnode = 1,
-        interaction.depth = 3 
-    )
-
-    fit <- train_gbm_model(x, y, parameters)
-
-    self$model <- fit    
+    self$model <- train_gbm_model(x, y, shrinkage=self$lr)
 }
 
 build_lasso_model <- function(self){
@@ -30,15 +21,7 @@ build_lasso_model <- function(self){
     x <- dt[, c("bedrooms", "bathrooms", "sqft_living", "grade", "waterfront", "condition")] 
     y <- dt[, price]
 
-    parameters <- data.frame(
-        alpha = 1.0,
-        lambda = 0.01 
-    )
-
-    source("./scripts/models.R")
-    fit <- train_lasso_model(x, y, parameters)
-
-    self$model <- fit    
+    self$model <- train_lasso_model(x, y, lambda=self$reg)
 }
 
 select_model <- function(self, inputs){

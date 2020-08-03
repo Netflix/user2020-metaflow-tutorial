@@ -8,16 +8,7 @@ build_gbm_model <- function(self){
     x <- dt[, !"price"] 
     y <- dt[, price]
 
-    parameters <- data.frame(
-        n.trees = 100,
-        shrinkage = self$input,
-        n.minobsinnode = 1,
-        interaction.depth = 3 
-    )
-
-    fit <- train_gbm_model(x, y, parameters)
-
-    self$model <- fit    
+    self$model <- train_gbm_model(x, y, shrinkage=0.01)
 }
 
 select_model <- function(self, inputs){

@@ -6,7 +6,8 @@ source("./scripts/build_model.R")
 library(metaflow)
 
 metaflow("HouseFlow") %>%
-    parameter("lr", help="learning rate", required=TRUE) %>%
+    parameter("lr", help="learning rate", type="float", required=TRUE) %>%
+    parameter("reg", help="regularization parameter", type="float", required=TRUE) %>%
     step(step = "start",
          next_step = "pull_house_data") %>%
     step(step = "pull_house_data",

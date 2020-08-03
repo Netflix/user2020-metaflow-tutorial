@@ -1,5 +1,11 @@
+train_gbm_model <- function(x, y, shrinkage=0.01, n.trees = 100, depth = 3){
+    parameters <- data.frame(
+        n.trees = n.trees,
+        shrinkage = shrinkage,
+        n.minobsinnode = 1,
+        interaction.depth = depth 
+    )
 
-train_gbm_model <- function(x, y, parameters){
     train_control <- caret::trainControl(
         method = "cv",
         number = 5)
@@ -16,7 +22,12 @@ train_gbm_model <- function(x, y, parameters){
     return(list(model = gbmfit, results = gbmfit$results))
 }
 
-train_lasso_model <- function(x, y, parameters){
+train_lasso_model <- function(x, y, lambda=0.01, alpha=1.0){
+    parameters <- data.frame(
+        alpha = alpha,
+        lambda = lambda
+    )
+
     train_control <- caret::trainControl(
         method = "cv",
         number = 5)    

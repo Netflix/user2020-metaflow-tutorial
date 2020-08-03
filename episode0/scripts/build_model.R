@@ -2,15 +2,9 @@ build_model <- function(dt){
     x <- dt[, !"price"] 
     y <- dt[, price]
 
-    parameters <- data.frame(
-        n.trees = 100,
-        shrinkage = 0.01,
-        n.minobsinnode = 1,
-        interaction.depth = 3
-    )
 
     source("./scripts/models.R")
-    fit <- train_gbm_model(x, y, parameters)
+    fit <- train_gbm_model(x, y)
 
     summarize_model(fit)
 
@@ -18,7 +12,6 @@ build_model <- function(dt){
 
     return(fit)
 }
-
 
 summarize_model <- function(fit){
     print(fit$results)
