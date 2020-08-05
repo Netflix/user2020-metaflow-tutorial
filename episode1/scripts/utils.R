@@ -1,14 +1,14 @@
 load_dependencies <- function(){
-    if (!suppressWarnings(require(data.table))) {
+    if (!suppressMessages(require(data.table))) {
         install.packages("data.table", repos = "https://cloud.r-project.org", quiet=TRUE)
     }
-    if (!suppressWarnings(require(caret))) {
+    if (!suppressMessages(require(caret))) {
         install.packages("caret", repos = "https://cloud.r-project.org", quiet=TRUE)
     }
-    if (!suppressWarnings(require(glmnet))) {
+    if (!suppressMessages(require(glmnet))) {
         install.packages("glmnet", repos = "https://cloud.r-project.org", quiet=TRUE)
     }
-    if (!suppressWarnings(require(gbm))) {
+    if (!suppressMessages(require(gbm))) {
         install.packages("gbm", repos = "https://cloud.r-project.org", quiet=TRUE)
     }
 }
