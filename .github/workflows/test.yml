@@ -39,7 +39,7 @@ jobs:
     - name: Install Metaflow R 
       run: |
         Rscript -e 'install.packages("devtools", repos="https://cloud.r-project.org", Ncpus=8)'
-        Rscript -e 'devtools::install_github("Netflix/metaflow@R-dev", subdir="R")'
+        Rscript -e 'devtools::install_github("Netflix/metaflow", subdir="R")'
         Rscript -e 'metaflow::install()'
 
     - name: Install R dependencies for R tests
