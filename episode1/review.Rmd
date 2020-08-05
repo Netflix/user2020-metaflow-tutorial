@@ -1,0 +1,23 @@
+---
+title: "Review models"
+output: html_notebook
+---
+
+Let's check the features and model built from our recent flows.
+
+```{r}
+library(metaflow)
+
+f <- flow_client$new("HouseFlow")
+print(f$runs)
+```
+
+```{r}
+r <- run_client$new("HouseFlow/482")
+print(r$artifacts)
+dt <- r$artifact("features")
+head(dt)
+fitted.model <- r$artifact("model")
+print(fitted.model)
+```
+
