@@ -8,7 +8,7 @@ build_gbm_model <- function(self){
     x <- dt[, !"price"] 
     y <- dt[, price]
 
-    self$model <- train_gbm_model(x, y, shrinkage=0.01)
+    self$model <- train_gbm_model(x, y, shrinkage=self$input)
 }
 
 select_model <- function(self, inputs){
