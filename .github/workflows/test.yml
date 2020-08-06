@@ -47,5 +47,5 @@ jobs:
         Rscript -e 'install.packages(c("data.table", "caret", "glmnet", "gbm"), repos="https://cloud.r-project.org", Ncpus=8)'    
     
     - name: Run tutorials tests
-      run: bash test.sh 
+      run: cd tests; bash test.sh 
 
