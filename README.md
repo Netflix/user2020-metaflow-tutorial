@@ -1,6 +1,6 @@
-# user2020-metaflow-tutorial
+# useR! 2020 Metaflow Tutorial
 Tutorial contents for [useR! 2020](https://user2020.r-project.org/program/tutorials/) Metaflow workshop.
- 
+
 ## Install
 ```R
 devtools::install_github("Netflix/user2020-metaflow-tutorial", dependencies=TRUE)
