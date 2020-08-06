@@ -9,10 +9,11 @@ Let's check the features and model built from our recent flows.
 library(metaflow)
 
 f <- flow_client$new("HouseFlow")
-print(f$runs)
 ```
 
 ```{r}
+library(metaflow)
+set_namespace("user:jge")
 r <- run_client$new("HouseFlow/482")
 print(r$artifacts)
 dt <- r$artifact("features")
