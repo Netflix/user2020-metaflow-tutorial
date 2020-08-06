@@ -1,5 +1,6 @@
 # user2020-metaflow-tutorial
-
+Tutorial contents for [useR! 2020](https://user2020.r-project.org/program/tutorials/) Metaflow workshop.
+ 
 ## Install
 ```R
 devtools::install_github("Netflix/user2020-metaflow-tutorial", dependencies=TRUE)
@@ -13,5 +14,5 @@ user2020metaflow::pull_tutorials()
 Run the following commands to make sure we've setup successfully:
 ```R
 setwd("./user2020_tutorials/episode0_vanilla_R")
-source("run.R)
+source("run.R")
 ```
